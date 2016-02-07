@@ -35,31 +35,31 @@ No attribution is necessary to use ONonce; I am merely hopeful it will prove use
 2. Review the defaults and, at a minimum, update the SECRET to your own, unique string
 3. Add it to the files from which you need to call it:
 
-    include 'ONonce.php';
+    `include 'ONonce.php';`
 
 ## Usage ##
 
 ### Hidden form input ###
 
-1. Create (with defaults):
+Create (with defaults):
 
-    echo ONonce::create_form_input('name_value', 'action_value');  
+    echo ONonce::create_form_input('name_value', 'action_value');
 
-2. Confirm (with defaults):
+Confirm (with defaults):
 
-    $nonce_from_form = sanitize($_POST['_ononce']);
-    if (ONonce::is_valid('name_value', 'action_value', $nonce_from_form))
-    {
+    $nonce_from_form = sanitize($_POST['_ononce']);  
+    if (ONonce::is_valid('name_value', 'action_value', $nonce_from_form))  
+    {  
   
         // Do something  
   
     }  
-    
-3. Create (with overrides):
+        
+Create (with overrides):
 
     echo ONonce::create_form_input('name_value', 'action_value', array('current_user' => 12, 'lifetime' => 300));
 
-4. Confirm (with overrides):
+Confirm (with overrides):
 
     $nonce_from_form = sanitize($_POST['_ononce']);
     if (ONonce::is_valid('name_value', 'action_value', $nonce_from_form, array('current_user' => 12, 'lifetime' => 300)))
@@ -71,11 +71,11 @@ No attribution is necessary to use ONonce; I am merely hopeful it will prove use
 
 ### URL fragment ###
 
-1. Create (with defaults):
+Create (with defaults):
 
     echo 'https://some_url.com?query_param1=foo/&'.ONonce::create_url_fragment('name_value', 'action_value');
 
-2. Confirm (with defaults):
+Confirm (with defaults):
 
     $nonce_from_url = sanitize($_GET['ononce']);
     if (ONonce::is_valid('name_value', 'action_value', $nonce_from_url))
@@ -85,11 +85,11 @@ No attribution is necessary to use ONonce; I am merely hopeful it will prove use
   
     }
     
-3. Create (with overrides):
+Create (with overrides):
 
     echo 'https://some_url.com?query_param1=foo/&'.ONonce::create_url_fragment('name_value', 'action_value', array('current_user' => 12, 'lifetime' => 300));
     
-4. Confirm (with overrides):
+Confirm (with overrides):
 
     $nonce_from_url = sanitize($_GET['ononce']);
     if (ONonce::is_valid('name_value', 'action_value', $nonce_from_url, array('current_user' => 12, 'lifetime' => 300)))
